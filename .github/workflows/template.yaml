@@ -41,7 +41,7 @@ jobs:
         matrix:
             value: ${{ fromJson(setup.outputs.matrix.value) }}
         steps:
-        - name: 🎭 Set Environment
-            id: set-environment
-            run: |
+            - name: 🎭 Set Environment
+              id: set-environment
+              run: |
                     echo "${{ matrix.value }}"
