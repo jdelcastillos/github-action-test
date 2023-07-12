@@ -1,27 +1,30 @@
-name: ci_cd-sb-microservicios-searchNode
+name: ci_cd-sb-microservicios-searchNode2
 on:  
   push:
     branches: [master]
     paths:
-      - 'APP2\*'
+      - 'APP1\*'
   pull_request:
     branches: [master]
     paths:
       - 'APP2\*'
 
-  workflow_dispatch:
-
 jobs:
-  ci_cd-sb-microservicios-searchNode:
+  ci_cd-sb-microservicios-searchNode2:
     uses: jdelcastillos/github-action-test/.github/workflows/template.yml@master
     with:
-      path-destination-deploy: 'SBBuscadorSearch'
-      sonar-exclusions: '**/test/**/*'
-      sonar-coverage-exclusions: '**/test/**/*,**/__mocks__/**/*,**/controllers/**/*,**/src/*.js,**/src/scripts/**/*'
-      nodejs-project-path: 'api-search'
-      npm-install-command: 'npm ci'
-      service: 'SBBuscador'
-      node-version: '12.22.12'
+      lista: [
+        {
+          "variable":"FOLDER_WORK",
+          "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+          "archivo":"appspec.yml"
+        },
+        {
+          "variable":"FOLDER_WORK",
+          "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+          "archivo":"appspec.yml"
+        }
+        ]
     secrets:
       IAM_ARN: ${{ secrets.AWS_ARN_ROLE_GITHUB }}
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

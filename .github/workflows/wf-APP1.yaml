@@ -3,11 +3,11 @@ on:
   push:
     branches: [master]
     paths:
-      - 'src\Services\Personalizacion\Personalizacion.searchNode\*'
+      - 'APP1\*'
   pull_request:
     branches: [master]
     paths:
-      - 'src\Services\Personalizacion\Personalizacion.searchNode\*'
+      - 'APP2\*'
 
 jobs:
   ci_cd-sb-microservicios-searchNode:
