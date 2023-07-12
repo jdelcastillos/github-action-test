@@ -15,21 +15,26 @@ permissions:
 #                echo '::set-output name=value::[{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"},{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"}]'
 
 jobs:
+    setup:
+        runs-on: ubuntu-latest
+        outputs:
+          matrix: ${{ steps.matrix.outputs.value }}
+        steps:
+          - id: matrix
+            run: |
+                echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
+          - id: hola
+            run: echo 'HOLA'
 
-  setup:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.matrix.outputs.value }}
-    steps:
-      - id: matrix
-        run: |
-          echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
-  build:
-    needs: [ setup ]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        value: ${{fromJson(needs.setup.outputs.matrix)}}
-    steps:
-      - run: |
-          echo "${{ matrix.value }}"
+    environment:
+        name: 🎭 environment
+        needs: [setup]
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                value: ${{ fromJson(needs.setup.outputs.matrix.value) }}
+        steps:
+            - name: 🎭 Set Environment
+              id: set-environment
+              run: |
+                    echo "${{ matrix.value }}"
