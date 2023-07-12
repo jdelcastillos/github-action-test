@@ -37,8 +37,9 @@ jobs:
         name: 🎭 environment
         needs: [setup]
         runs-on: ubuntu-latest
-        matrix:
-            value: ${{ fromJson(setup.outputs.matrix.value) }}
+        strategy:
+            matrix:
+                value: ${{ fromJson(setup.outputs.matrix.value) }}
         steps:
             - name: 🎭 Set Environment
               id: set-environment
