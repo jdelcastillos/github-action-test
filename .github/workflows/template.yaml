@@ -33,6 +33,9 @@ jobs:
                 "archivo":"appspec.yml"
                 }
                 ]'
+          - id: hola
+            run: echo 'HOLA'
+            
     environment:
         name: 🎭 environment
         needs: [setup]
