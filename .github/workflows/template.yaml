@@ -14,25 +14,34 @@ permissions:
   repository-projects: read
 
 jobs:
-  environment:
-    name: 🎭 environment
-    runs-on: ubuntu-latest
-    lista: [
-        {
-        "variable":"FOLDER_WORK",
-        "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-        "archivo":"appspec.yml"
-        },
-        {
-        "variable":"FOLDER_WORK",
-        "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-        "archivo":"appspec.yml"
-        }
-     ]
-    matrix:
-        value: ${{ fromJson(env.lista) }}
-    steps:
-      - name: 🎭 Set Environment
-        id: set-environment
-        run: |
-                echo "${{ matrix.value }}"
+    setup:
+        runs-on: ubuntu-latest
+        outputs:
+          matrix: ${{ steps.matrix.outputs.value }}
+        steps:
+          - id: matrix
+            run: |
+                echo '::set-output name=value::[
+                {
+                "variable":"FOLDER_WORK",
+                "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+                "archivo":"appspec.yml"
+                },
+                {
+                "variable":"FOLDER_WORK",
+                "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+                "archivo":"appspec.yml"
+                }
+                ]'
+    environment:
+        name: 🎭 environment
+        needs: [setup]
+        runs-on: ubuntu-latest
+        lista: 
+        matrix:
+            value: ${{ fromJson() }}
+        steps:
+        - name: 🎭 Set Environment
+            id: set-environment
+            run: |
+                    echo "${{ setup.outputs.matrix.value }}"
