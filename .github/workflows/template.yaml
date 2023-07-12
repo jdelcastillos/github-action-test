@@ -1,23 +1,11 @@
 name: wf-dotnet
 
 on:
-  workflow_call:
-    inputs:
-      lista:
-        required: true
-        type: Array
-        default: [
-                    {
-                    "variable":"FOLDER_WORK",
-                    "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-                    "archivo":"appspec.yml"
-                    },
-                    {
-                    "variable":"FOLDER_WORK",
-                    "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-                    "archivo":"appspec.yml"
-                    }
-                 ]
+    workflow_dispatch:
+    pull_request:
+    push:
+      branches:
+        - main
       
 permissions:
   id-token: write
@@ -29,8 +17,20 @@ jobs:
   environment:
     name: 🎭 environment
     runs-on: ubuntu-latest
+    lista: [
+        {
+        "variable":"FOLDER_WORK",
+        "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+        "archivo":"appspec.yml"
+        },
+        {
+        "variable":"FOLDER_WORK",
+        "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+        "archivo":"appspec.yml"
+        }
+     ]
     matrix:
-        value: ${{ fromJson(inputs.lista) }}
+        value: ${{ fromJson(env.lista) }}
     steps:
       - name: 🎭 Set Environment
         id: set-environment
