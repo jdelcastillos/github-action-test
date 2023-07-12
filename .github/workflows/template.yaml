@@ -37,7 +37,6 @@ jobs:
         name: 🎭 environment
         needs: [setup]
         runs-on: ubuntu-latest
-        lista: 
         matrix:
             value: ${{ fromJson(setup.outputs.matrix.value) }}
         steps:
