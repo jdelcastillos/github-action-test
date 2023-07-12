@@ -35,4 +35,4 @@ jobs:
       - name: 🎭 Set Environment
         id: set-environment
         run: |
-        echo "${{ matrix.value }}"
+                echo "${{ matrix.value }}"
