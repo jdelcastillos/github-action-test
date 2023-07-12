@@ -24,4 +24,4 @@ jobs:
       - name: 🎭 Set Environment
         id: set-environment
         run: |
-        echo "${{ matrix.value.variable }} - ${{ matrix.value.valor }} - ${{ matrix.value.archivo }}"
+        echo "${{ matrix.value }}"
