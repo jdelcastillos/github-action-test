@@ -21,21 +21,10 @@ jobs:
         steps:
           - id: matrix
             run: |
-                echo '::set-output name=value::[
-                {
-                "variable":"FOLDER_WORK",
-                "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-                "archivo":"appspec.yml"
-                },
-                {
-                "variable":"FOLDER_WORK",
-                "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-                "archivo":"appspec.yml"
-                }
-                ]'
+                echo '::set-output name=value::[{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"},{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"}]'
           - id: hola
             run: echo 'HOLA'
-            
+
     environment:
         name: 🎭 environment
         needs: [setup]
