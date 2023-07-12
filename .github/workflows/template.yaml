@@ -12,6 +12,7 @@ permissions:
   contents: read
   packages: write
   repository-projects: read
+#                echo '::set-output name=value::[{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"},{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"}]'
 
 jobs:
     setup:
@@ -21,7 +22,7 @@ jobs:
         steps:
           - id: matrix
             run: |
-                echo '::set-output name=value::[{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"},{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"}]'
+                echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
           - id: hola
             run: echo 'HOLA'
 
