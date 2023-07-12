@@ -6,7 +6,18 @@ on:
       lista:
         required: true
         type: Array
-        
+        default: [
+                    {
+                    "variable":"FOLDER_WORK",
+                    "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+                    "archivo":"appspec.yml"
+                    },
+                    {
+                    "variable":"FOLDER_WORK",
+                    "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
+                    "archivo":"appspec.yml"
+                    }
+                 ]
       
 permissions:
   id-token: write
