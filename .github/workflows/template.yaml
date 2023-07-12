@@ -1,0 +1,27 @@
+name: wf-dotnet
+
+on:
+  workflow_call:
+    inputs:
+      lista:
+        required: true
+        type: Array
+        
+      
+permissions:
+  id-token: write
+  contents: read
+  packages: write
+  repository-projects: read
+
+jobs:
+  environment:
+    name: 🎭 environment
+    runs-on: ubuntu-latest
+    matrix:
+        value: ${{ fromJson(inputs.lista) }}
+    steps:
+      - name: 🎭 Set Environment
+        id: set-environment
+        run: |
+        echo "${{ matrix.value.variable }} - ${{ matrix.value.valor }} - ${{ matrix.value.archivo }}"

@@ -1,0 +1,27 @@
+name: ci_cd-sb-microservicios-searchNode
+on:  
+  push:
+    branches: [master]
+    paths:
+      - 'APP2\*'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'APP2\*'
+
+  workflow_dispatch:
+
+jobs:
+  ci_cd-sb-microservicios-searchNode:
+    uses: jdelcastillos/github-action-test/.github/workflows/template.yml@master
+    with:
+      path-destination-deploy: 'SBBuscadorSearch'
+      sonar-exclusions: '**/test/**/*'
+      sonar-coverage-exclusions: '**/test/**/*,**/__mocks__/**/*,**/controllers/**/*,**/src/*.js,**/src/scripts/**/*'
+      nodejs-project-path: 'api-search'
+      npm-install-command: 'npm ci'
+      service: 'SBBuscador'
+      node-version: '12.22.12'
+    secrets:
+      IAM_ARN: ${{ secrets.AWS_ARN_ROLE_GITHUB }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
