@@ -30,6 +30,8 @@ jobs:
         name: 🎭 environment
         needs: [setup]
         runs-on: ubuntu-latest
+        env:
+            OUTPUT: ${{ steps.id.outputs.arr }}
         strategy:
             matrix:
                 value: ${{ fromJson(needs.setup.outputs.matrix.value) }}

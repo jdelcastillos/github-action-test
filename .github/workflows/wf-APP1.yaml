@@ -11,20 +11,5 @@ on:
 
 jobs:
   ci_cd-sb-microservicios-searchNode:
-    uses: jdelcastillos/github-action-test/.github/workflows/template.yml@master
-    with:
-      lista: [
-        {
-          "variable":"FOLDER_WORK",
-          "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-          "archivo":"appspec.yml"
-        },
-        {
-          "variable":"FOLDER_WORK",
-          "valor":"vars.FOLDER_PERSONALIZACION_SYNC",
-          "archivo":"appspec.yml"
-        }
-        ]
-    secrets:
-      IAM_ARN: ${{ secrets.AWS_ARN_ROLE_GITHUB }}
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    uses: jdelcastillos/shiny-octo-carnival/.github/workflows/template.yml@master
+    
