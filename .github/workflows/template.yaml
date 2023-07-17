@@ -9,6 +9,6 @@ jobs:
       - id: foo
         uses: jdelcastillos/shiny-octo-carnival@main
         with:
-          branch: 'feature/hola'
+          branch: 'refs/heads/master'
       - run: echo random-number ${{ steps.foo.outputs.environment }}
         shell: bash
