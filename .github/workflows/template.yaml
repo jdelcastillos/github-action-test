@@ -10,5 +10,6 @@ jobs:
         uses: jdelcastillos/shiny-octo-carnival@main
         with:
           branch: 'refs/heads/master'
+          branching-model: 'gitflow-somosbelcorp'
       - run: echo random-number ${{ steps.foo.outputs.environment }}
         shell: bash
