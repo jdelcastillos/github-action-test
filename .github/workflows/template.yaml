@@ -1,42 +1,14 @@
-name: wf-dotnet
-
-on:
-    workflow_dispatch:
-    pull_request:
-    push:
-      branches:
-        - main
-      
-permissions:
-  id-token: write
-  contents: read
-  packages: write
-  repository-projects: read
-#                echo '::set-output name=value::[{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"},{\"variable\":\"FOLDER_WORK\",\"valor\":\"vars.FOLDER_PERSONALIZACION_SYNC\",\"archivo\":\"appspec.yml\"}]'
+on: [push]
 
 jobs:
-    setup:
-        runs-on: ubuntu-latest
-        outputs:
-          matrix: ${{ steps.matrix.outputs.value }}
-        steps:
-          - id: matrix
-            run: |
-                echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
-          - id: hola
-            run: echo 'HOLA'
-
-    environment:
-        name: 🎭 environment
-        needs: [setup]
-        runs-on: ubuntu-latest
-        env:
-            OUTPUT: ${{ steps.id.outputs.arr }}
-        strategy:
-            matrix:
-                value: ${{ fromJson(needs.setup.outputs.matrix.value) }}
-        steps:
-            - name: 🎭 Set Environment
-              id: set-environment
-              run: |
-                    echo "${{ matrix.value }}"
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: jdelcastillos/shiny-octo-carnival@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
