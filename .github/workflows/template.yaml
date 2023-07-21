@@ -9,7 +9,7 @@ jobs:
   echo_json_array:
     runs-on: ubuntu-latest
     env:
-      hola: "CHAU"
+      suffix: "CHAU"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
         uses: jdelcastillos/shiny-octo-carnival@main
         id: getVariable
         with:
-          variable-name: "HOLA_${{env.hola}}"
+          variable-name: "HOLA_${{env.suffix}}"
       - name: Set Output
         shell: bash
         run: echo "RESULT=${{ steps.getVariable.outputs.value }}" >> $GITHUB_OUTPUT
