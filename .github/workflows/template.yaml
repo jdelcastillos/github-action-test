@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run Iterate JSON Array action
+      - name: Custom variable
         uses: jdelcastillos/shiny-octo-carnival@main
         with:
-          json_array: '[{"file": "file1.txt", "pattern": "pattern1", "value": "value1"}, {"file": "file2.txt", "pattern": "pattern2", "value": "value2"}]'
+          variable-name: '[{"file": "file1.txt", "pattern": "pattern1", "value": "value1"}, {"file": "file2.txt", "pattern": "pattern2", "value": "value2"}]'
