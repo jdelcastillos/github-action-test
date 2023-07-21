@@ -13,7 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
       - name: Custom variable
         uses: jdelcastillos/shiny-octo-carnival@main
         id: getVariable
