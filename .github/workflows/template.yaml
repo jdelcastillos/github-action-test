@@ -8,7 +8,8 @@ on:
 jobs:
   echo_json_array:
     runs-on: ubuntu-latest
-
+    env:
+      hola: "chau"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -16,4 +17,4 @@ jobs:
       - name: Custom variable
         uses: jdelcastillos/shiny-octo-carnival@main
         with:
-          variable-name: '[{"file": "file1.txt", "pattern": "pattern1", "value": "value1"}, {"file": "file2.txt", "pattern": "pattern2", "value": "value2"}]'
+          variable-name: "HOLA-${{env.hola}}""
