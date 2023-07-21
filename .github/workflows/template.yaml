@@ -18,6 +18,7 @@ jobs:
         id: getVariable
         with:
           variable-name: "HOLA_${{env.suffix}}"
+          
       - name: Set Output
         shell: bash
         run: echo "RESULT=${{ steps.getVariable.outputs.value }}" >> $GITHUB_OUTPUT
