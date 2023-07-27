@@ -22,7 +22,7 @@ jobs:
           name: "td-sn-change"
           environment: "qas"
           index: "PE"
-          pattern: "NAME-ENV-i"
+          pattern: "NAME-i-ENV"
 
       - name: Set Output
         shell: bash
