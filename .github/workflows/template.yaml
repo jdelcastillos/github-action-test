@@ -19,8 +19,11 @@ jobs:
         uses: jdelcastillos/shiny-octo-carnival@main
         id: getVariable
         with:
-          variable-name: "HOLA_${{env.suffix}}"
+          name: "td-sn-change"
+          environment: "qas"
+          index: "PE"
+          pattern: "NAME-ENV-i"
 
       - name: Set Output
         shell: bash
-        run: echo "RESULT=${{ steps.getVariable.outputs.value }}" >> $GITHUB_OUTPUT
+        run: echo "RESULT=${{ steps.getVariable.outputs.name }}" >> $GITHUB_OUTPUT
